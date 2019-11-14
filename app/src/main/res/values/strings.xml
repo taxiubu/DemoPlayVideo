@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DemoPlayVideo</string>
+    <string name="movieSchedule">LỊCH CHIẾU</string>
+    <string name="infor">THÔNG TIN</string>
+</resources>

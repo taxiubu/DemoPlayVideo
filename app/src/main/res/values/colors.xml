@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="transparent">#000000</color>
+    //Shimmer
+    <color name="white">#FFFFFF</color>
+    <color name="placeBackground">#90FFFFFF</color>
+    <color name="backgroundDetail">#5C5C5C</color>
+    //sliderView
+    <color name="iconControlSlider">#FFFFFF</color>
+    <color name="iconControlBackgroundSlider">#4CFFFFFF</color>
+    //item
+    <color name="colorBackgroundItem">#B4252525</color>
+    //textViewItem
+    <color name="colorTextView">#FFFFFF</color>
+    <color name="colorBackgroundTextView">#B0000000</color>
+    //detail
+    <color name="colorBackgroundDetail">#0C243D</color>
+    //textDetail
+    <color name="colorTVTitle">#FFEB3B</color>
+    <color name="colorTVInfor">#FFFFFF</color>
+</resources>

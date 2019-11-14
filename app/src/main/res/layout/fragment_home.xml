@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/imageSlider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_180sdp"
+        android:layout_alignParentTop="true"
+        app:sliderAnimationDuration="1000"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderIndicatorAnimationDuration="1000"
+        app:sliderIndicatorGravity="center_horizontal|bottom"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="@dimen/_3sdp"
+        app:sliderIndicatorRadius="@dimen/_2sdp"
+        app:sliderIndicatorSelectedColor="@color/iconControlSlider"
+        app:sliderIndicatorUnselectedColor="@color/iconControlBackgroundSlider"
+        app:sliderScrollTimeInSec="5"
+        app:sliderStartAutoCycle="true"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/imageSlider"
+        android:id="@+id/rcvHotVideo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>
