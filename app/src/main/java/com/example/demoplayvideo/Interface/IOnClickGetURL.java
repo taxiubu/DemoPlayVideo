@@ -1,5 +1,5 @@
 package com.example.demoplayvideo.Interface;
 
-public interface IOnClickItemAnime {
+public interface IOnClickGetURL {
     void onClick(String url);
 }

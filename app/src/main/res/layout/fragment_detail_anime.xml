@@ -109,65 +109,135 @@
                     android:layout_height="match_parent"/>
             </com.facebook.shimmer.ShimmerFrameLayout>
         </RelativeLayout>
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginLeft="@dimen/_10sdp"
             android:orientation="horizontal"
-            android:layout_marginTop="@dimen/_32sdp"
+            android:layout_marginTop="@dimen/_30sdp"
             android:layout_below="@id/cvImageMainAnime"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/_14sdp">
             <ImageView
+                android:id="@+id/iconPublish"
                 android:layout_gravity="center"
-                android:background="@drawable/calendar"
-                android:layout_width="@dimen/_15sdp"
-                android:layout_height="@dimen/_15sdp"/>
+                android:layout_width="@dimen/_14sdp"
+                android:layout_height="@dimen/_14sdp"/>
             <TextView
+                android:layout_toRightOf="@id/iconPublish"
                 android:layout_marginLeft="@dimen/_2sdp"
+                android:layout_marginRight="@dimen/_2sdp"
                 android:id="@+id/tvDatePublish"
-                android:textSize="@dimen/_10sdp"
+                android:textSize="@dimen/_9sdp"
                 android:textColor="@color/colorTextView"
-                android:text="11/13/2019 - 23:55"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_below="@id/cvImageMainAnime"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <ImageView
-                android:background="@drawable/set"
-                android:layout_width="@dimen/_15sdp"
+                android:id="@+id/iconEye"
+                android:layout_toRightOf="@id/tvDatePublish"
+                android:layout_width="@dimen/_14sdp"
                 android:layout_height="@dimen/_15sdp"/>
             <TextView
                 android:layout_marginLeft="@dimen/_2sdp"
-                android:text="Tập"
-                android:textSize="@dimen/_10sdp"
+                android:layout_toRightOf="@id/iconEye"
+                android:textSize="@dimen/_9sdp"
                 android:textColor="@color/colorTextView"
+                android:id="@+id/tvView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_below="@id/layoutImageCover"
+            <com.facebook.shimmer.ShimmerFrameLayout
+                app:shimmer_colored="true"
+                app:shimmer_duration="2000"
+                android:id="@+id/shimmerDatePublish"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:background="@drawable/background_shimmer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </RelativeLayout>
+        <ScrollView
             android:background="@color/colorBackgroundDetail"
+            android:layout_below="@id/layoutImageCover"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <TextView
-                android:textSize="@dimen/_15sdp"
-                android:textColor="@color/colorTVTitle"
-                android:text="@string/movieSchedule"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:textSize="@dimen/_15sdp"
-                android:textColor="@color/colorTVTitle"
-                android:text="@string/infor"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_below="@id/cvImageMainAnime"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp">
+                    <ImageView
+                        android:id="@+id/iconSet"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/set"
+                        android:layout_width="@dimen/_15sdp"
+                        android:layout_height="@dimen/_15sdp"/>
+                    <TextView
+                        android:id="@+id/tvTap"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/iconSet"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:text="@string/episode"
+                        android:textSize="@dimen/_10sdp"
+                        android:textColor="@color/colorTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_toRightOf="@id/tvTap"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:id="@+id/rcvEpisode"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="@dimen/_15sdp"
+                        android:textColor="@color/colorTVTitle"
+                        android:text="@string/movieSchedule"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:id="@+id/tvMovieSchedule"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/_100sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:textSize="@dimen/_15sdp"
+                        android:textColor="@color/colorTVTitle"
+                        android:text="@string/infor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp"
+                        android:id="@+id/tvDescription"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
     </RelativeLayout>
 </layout>

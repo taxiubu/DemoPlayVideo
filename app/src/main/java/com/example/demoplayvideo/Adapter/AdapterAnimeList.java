@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.demoplayvideo.Interface.IOnClickItemAnime;
+import com.example.demoplayvideo.Interface.IOnClickGetURL;
 import com.example.demoplayvideo.Model.Anime;
 import com.example.demoplayvideo.R;
 
@@ -22,9 +22,9 @@ import java.util.List;
 public class AdapterAnimeList extends RecyclerView.Adapter<AdapterAnimeList.ViewHolder> {
     List<Anime> animeList;
     Context context;
-    IOnClickItemAnime onClickItemAnime;
+    IOnClickGetURL onClickItemAnime;
 
-    public void setOnClickItemAnime(IOnClickItemAnime onClickItemAnime) {
+    public void setOnClickItemAnime(IOnClickGetURL onClickItemAnime) {
         this.onClickItemAnime = onClickItemAnime;
     }
 

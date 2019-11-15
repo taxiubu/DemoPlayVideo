@@ -46,16 +46,42 @@ public class GetHTMLData extends AsyncTask<Void, Void, Void> {
         Document document= Jsoup.parse(result);
         DetailAnime detailAnime=null;
         if(document!=null){
+            String vnTitle, engTitle, mainImage, datePublish, view, movieSchedule="", description="";
             Element content = document.selectFirst("section.content");
             Element col_sm_4= content.selectFirst("div.col-sm-4");
             Element linkImage= col_sm_4.select("img.movie-thumb").first();
             Element col_sm_8= content.selectFirst("div.col-sm-8");
-            String vnTitle= col_sm_8.select("h1").text();
-            String engTitle= col_sm_8.selectFirst("p.movie-info").text();
-            String mainImage= linkImage.attr("data-original");
-            detailAnime= new DetailAnime(vnTitle, engTitle, mainImage+".jpg", "", "", "");
+            vnTitle= col_sm_8.select("h1").text();
+            engTitle= col_sm_8.selectFirst("p.movie-info").text();
+            mainImage= linkImage.attr("data-original");
+            datePublish= col_sm_8.selectFirst("div.clearfix").selectFirst("span.bio").text();
+            view= col_sm_8.selectFirst("div.clearfix").selectFirst("span.bio").lastElementSibling().text();
+            Element html_movieschedule=col_sm_8.selectFirst("div.air_date");
+            if(html_movieschedule!=null)
+                movieSchedule= html_movieschedule.selectFirst("p").text();
+            Element col_md_9= content.selectFirst("div.col-md-9");
+            Element html_description= col_md_9.selectFirst("div.shortener");
+            if(html_description!=null)
+                description= html_description.text();
+            detailAnime= new DetailAnime(vnTitle, engTitle, mainImage+".jpg", datePublish, view, movieSchedule, description);
         }
 
         return detailAnime;
+    }
+    protected List<Episode> getEpsList(){
+        Document document= Jsoup.parse(result);
+        List<Episode> episodeList= new ArrayList<>();
+        if(document!=null){
+            Element movie_rate= document.selectFirst("div.movie-rate");
+            if(movie_rate!=null){
+                Elements movie_eps= movie_rate.select("div.movie-eps").select("a");
+                for (Element element:movie_eps){
+                    String title= element.attr("title");
+                    String href= element.attr("href");
+                    episodeList.add(new Episode(title, href));
+                }
+            }
+        }
+        return episodeList;
     }
 }

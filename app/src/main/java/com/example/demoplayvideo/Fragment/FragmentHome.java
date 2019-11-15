@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.demoplayvideo.Adapter.AdapterAnimeList;
 import com.example.demoplayvideo.Adapter.AdapterSliderView;
 import com.example.demoplayvideo.Interface.ICheckNull;
-import com.example.demoplayvideo.Interface.IOnClickItemAnime;
+import com.example.demoplayvideo.Interface.IOnClickGetURL;
 import com.example.demoplayvideo.Model.Anime;
 import com.example.demoplayvideo.Model.GetHTMLData;
 import com.example.demoplayvideo.R;
@@ -30,7 +29,7 @@ public class FragmentHome extends Fragment {
     RecyclerView rcvHotVideo;
     List<Anime> animes;
     SliderView imageSlider;
-    IOnClickItemAnime onClickItemAnime;
+    IOnClickGetURL onClickItemAnime;
     ICheckNull check;
     public static FragmentHome newInstance() {
 
@@ -63,7 +62,7 @@ public class FragmentHome extends Fragment {
         listSliderView.add(new Anime("", StringURL.IMAGE_HOT_05, StringURL.ANIME_HOT_05));
         AdapterSliderView adapterSliderView= new AdapterSliderView(listSliderView,getContext());
         imageSlider.setSliderAdapter(adapterSliderView);
-        adapterSliderView.setOnClickItemAnime(new IOnClickItemAnime() {
+        adapterSliderView.setOnClickItemAnime(new IOnClickGetURL() {
             @Override
             public void onClick(String url) {
                 onClickItemAnime.onClick(url);
@@ -81,7 +80,7 @@ public class FragmentHome extends Fragment {
             animes= getAnimeList();
             AdapterAnimeList adapter= new AdapterAnimeList(animes, getContext());
             rcvHotVideo.setAdapter(adapter);
-            adapter.setOnClickItemAnime(new IOnClickItemAnime() {
+            adapter.setOnClickItemAnime(new IOnClickGetURL() {
                 @Override
                 public void onClick(String url) {
                     onClickItemAnime.onClick(url);
@@ -99,8 +98,8 @@ public class FragmentHome extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof IOnClickItemAnime){
-            onClickItemAnime= (IOnClickItemAnime) context;
+        if(context instanceof IOnClickGetURL){
+            onClickItemAnime= (IOnClickGetURL) context;
         }
         else {
             throw new RuntimeException(context.toString()+ "must implement");

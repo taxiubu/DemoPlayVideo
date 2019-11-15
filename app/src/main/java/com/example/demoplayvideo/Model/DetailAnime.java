@@ -1,13 +1,14 @@
 package com.example.demoplayvideo.Model;
 
 public class DetailAnime {
-    private String vnTitleDetail, engTitleDetail, mainImage, datePublish, movieSchedule, description;
+    private String vnTitleDetail, engTitleDetail, mainImage, datePublish, view, movieSchedule, description;
 
-    public DetailAnime(String vnTitleDetail, String engTitleDetail, String mainImage, String datePublish, String movieSchedule, String description) {
+    public DetailAnime(String vnTitleDetail, String engTitleDetail, String mainImage, String datePublish, String view, String movieSchedule, String description) {
         this.vnTitleDetail = vnTitleDetail;
         this.engTitleDetail = engTitleDetail;
         this.mainImage = mainImage;
         this.datePublish = datePublish;
+        this.view = view;
         this.movieSchedule = movieSchedule;
         this.description = description;
     }
@@ -58,5 +59,13 @@ public class DetailAnime {
 
     public void setMainImage(String mainImage) {
         this.mainImage = mainImage;
+    }
+
+    public String getView() {
+        return view;
+    }
+
+    public void setView(String view) {
+        this.view = view;
     }
 }

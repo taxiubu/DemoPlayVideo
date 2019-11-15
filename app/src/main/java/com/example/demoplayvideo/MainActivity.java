@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment;
 import com.example.demoplayvideo.Fragment.FragmentDetailAnime;
 import com.example.demoplayvideo.Fragment.FragmentHome;
 import com.example.demoplayvideo.Interface.ICheckNull;
-import com.example.demoplayvideo.Interface.IOnClickItemAnime;
+import com.example.demoplayvideo.Interface.IOnClickGetURL;
 import com.example.demoplayvideo.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements IOnClickItemAnime, ICheckNull {
+public class MainActivity extends AppCompatActivity implements IOnClickGetURL, ICheckNull {
     private static final String TAG = "MainActivity";
     ActivityMainBinding binding;
     @Override

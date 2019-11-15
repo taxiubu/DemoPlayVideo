@@ -17,8 +17,8 @@
     <color name="colorTextView">#FFFFFF</color>
     <color name="colorBackgroundTextView">#B0000000</color>
     //detail
+    <color name="colorBackgroundEps">#DFDFDF</color>
     <color name="colorBackgroundDetail">#0C243D</color>
-    //textDetail
     <color name="colorTVTitle">#FFEB3B</color>
     <color name="colorTVInfor">#FFFFFF</color>
 </resources>

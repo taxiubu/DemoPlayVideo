@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.demoplayvideo.Interface.IOnClickItemAnime;
+import com.example.demoplayvideo.Interface.IOnClickGetURL;
 import com.example.demoplayvideo.Model.Anime;
 import com.example.demoplayvideo.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
@@ -17,14 +17,14 @@ import java.util.List;
 public class AdapterSliderView extends SliderViewAdapter<AdapterSliderView.SliderViewHolder> {
     List<Anime> animeList;
     Context context;
-    IOnClickItemAnime onClickItemAnime;
+    IOnClickGetURL onClickItemAnime;
 
     public AdapterSliderView(List<Anime> animeList, Context context) {
         this.animeList = animeList;
         this.context = context;
     }
 
-    public void setOnClickItemAnime(IOnClickItemAnime onClickItemAnime) {
+    public void setOnClickItemAnime(IOnClickGetURL onClickItemAnime) {
         this.onClickItemAnime = onClickItemAnime;
     }
 
