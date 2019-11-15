@@ -1,9 +1,11 @@
 package com.example.demoplayvideo.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,9 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.demoplayvideo.Adapter.AdapterEpsList;
+import com.example.demoplayvideo.Interface.IOnClickGetURL;
 import com.example.demoplayvideo.Model.DetailAnime;
 import com.example.demoplayvideo.Model.Episode;
 import com.example.demoplayvideo.Model.GetHTMLData;
+import com.example.demoplayvideo.PlayVideo;
 import com.example.demoplayvideo.R;
 import com.example.demoplayvideo.databinding.FragmentDetailAnimeBinding;
 
@@ -56,7 +60,7 @@ public class FragmentDetailAnime extends Fragment {
             super.onPostExecute(aVoid);
             detailAnime= getDetailAnime();
             if(detailAnime!=null)
-                inVisibleShimmer();
+                inVisibleShimmerTop();
 
             Glide.with(getContext()).load(detailAnime.getMainImage())
                     .error(R.drawable.image_cover)
@@ -93,10 +97,35 @@ public class FragmentDetailAnime extends Fragment {
             if(episodeList!=null){
                 AdapterEpsList adapterEpsList= new AdapterEpsList(getContext(), episodeList);
                 binding.rcvEpisode.setAdapter(adapterEpsList);
+                adapterEpsList.setOnClickGetURL(new IOnClickGetURL() {
+                    @Override
+                    public void onClick(String url) {
+                        Intent playVideo= new Intent(getContext(), PlayVideo.class);
+                        if(url.equals(""))
+                            Toast.makeText(getContext(), "chưa có", Toast.LENGTH_LONG).show();
+                        else{
+                            playVideo.putExtra("url", url);
+                            startActivity(playVideo);
+                        }
+
+                    }
+                });
+                adapterEpsList.notifyDataSetChanged();
+                inVisibleShimmerBottom();
             }
         }
     }
-    private void inVisibleShimmer(){
+
+    private void inVisibleShimmerBottom() {
+        binding.shimmerEps.stopShimmer();
+        binding.shimmerEps.setVisibility(View.INVISIBLE);
+        binding.shimmerSchedule.stopShimmer();
+        binding.shimmerSchedule.setVisibility(View.INVISIBLE);
+        binding.shimmerDescription.stopShimmer();
+        binding.shimmerDescription.setVisibility(View.INVISIBLE);
+    }
+
+    private void inVisibleShimmerTop(){
         binding.shimmerImageCover.stopShimmer();
         binding.shimmerImageCover.setVisibility(View.INVISIBLE);
         binding.shimmerImageMain.stopShimmer();
@@ -108,4 +137,5 @@ public class FragmentDetailAnime extends Fragment {
         binding.shimmerDatePublish.stopShimmer();
         binding.shimmerDatePublish.setVisibility(View.INVISIBLE);
     }
+
 }

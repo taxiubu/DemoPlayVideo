@@ -24,6 +24,10 @@ public class AdapterEpsList extends RecyclerView.Adapter<AdapterEpsList.ViewHold
         this.episodeList = episodeList;
     }
 
+    public void setOnClickGetURL(IOnClickGetURL onClickGetURL) {
+        this.onClickGetURL = onClickGetURL;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,6 +39,12 @@ public class AdapterEpsList extends RecyclerView.Adapter<AdapterEpsList.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Episode episode= episodeList.get(position);
         holder.tvTitleEps.setText(episode.getTitle());
+        holder.tvTitleEps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickGetURL.onClick(episode.getUrl());
+            }
+        });
     }
 
     @Override

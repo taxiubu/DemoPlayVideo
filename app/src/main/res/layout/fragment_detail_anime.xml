@@ -194,6 +194,18 @@
                         android:id="@+id/rcvEpisode"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"/>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmerEps"
+                        android:layout_toRightOf="@id/tvTap"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_30sdp">
+                        <ImageView
+                            android:background="@drawable/background_shimmer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_marginLeft="@dimen/_10sdp"
@@ -214,8 +226,18 @@
                         android:layout_marginLeft="@dimen/_100sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:layout_marginLeft="@dimen/_100sdp"
+                        android:id="@+id/shimmerSchedule"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_20sdp">
+                        <ImageView
+                            android:background="@drawable/background_shimmer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
                 </RelativeLayout>
-                <LinearLayout
+                <RelativeLayout
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:orientation="vertical"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -229,14 +251,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
                     <TextView
-                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginTop="@dimen/_25sdp"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp"
                         android:id="@+id/tvDescription"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
-                </LinearLayout>
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:id="@+id/shimmerDescription"
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="@dimen/_150sdp">
+                        <ImageView
+                            android:background="@drawable/background_shimmer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </com.facebook.shimmer.ShimmerFrameLayout>
+
+                </RelativeLayout>
             </LinearLayout>
         </ScrollView>
     </RelativeLayout>

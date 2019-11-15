@@ -78,10 +78,21 @@ public class GetHTMLData extends AsyncTask<Void, Void, Void> {
                 for (Element element:movie_eps){
                     String title= element.attr("title");
                     String href= element.attr("href");
+                    if(href.indexOf(".html")==-1)
+                        href="";
                     episodeList.add(new Episode(title, href));
                 }
             }
         }
         return episodeList;
+    }
+    protected String getLinkVideo(){
+        Document document= Jsoup.parse(result);
+        String link="";
+        if(document!=null){
+            Element linkVideo= document.selectFirst("video.cplayer-tech");
+            link= linkVideo.attr("src");
+        }
+        return link;
     }
 }
