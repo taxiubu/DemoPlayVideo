@@ -35,7 +35,7 @@ public class GetHTMLData extends AsyncTask<Void, Void, Void> {
             Elements moveList= document.selectFirst("div.flex-wrap-movielist").select("a");
             for (Element element:moveList){
                 String url= element.attr("href");
-                String title= element.select("p.title").text();
+                String title= element.select("p.elipsis").text();
                 String image= element.select("div.pl-carousel-img").attr("data-original");
                 animeList.add(new Anime(title, image+".jpg", url));
             }

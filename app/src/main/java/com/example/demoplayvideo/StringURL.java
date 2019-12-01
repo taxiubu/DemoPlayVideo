@@ -16,4 +16,6 @@ public class StringURL {
     public static final String IMAGE_HOT_03="https://media.dongphim.net/media/image/id/5db924dc0df9381570f41329_480x.jpg";
     public static final String IMAGE_HOT_04="https://media.dongphim.net/media/image/id/5d1fdcf10df938fe04735e5c_480x.jpg";
     public static final String IMAGE_HOT_05="https://media.dongphim.net/media/image/id/5ca60656acc399eab98b45d2_480x.jpg";
+    //key
+    public static final String YOUTUBE_API_KEY="AIzaSyD3eTRrTDTvWJ1VKecsSfPq5uEvV9SZDVc";
 }

@@ -1,16 +1,19 @@
 package com.example.demoplayvideo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.widget.MediaController;
 import android.widget.VideoView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.demoplayvideo.Model.GetHTMLData;
 import com.example.demoplayvideo.databinding.ActivityMainBinding;
+import com.gongwen.marqueen.SimpleMF;
+import com.gongwen.marqueen.SimpleMarqueeView;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class PlayVideo extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -23,13 +26,13 @@ public class PlayVideo extends AppCompatActivity {
         setContentView(R.layout.activity_play_video);
         //binding= DataBindingUtil.setContentView(this, R.layout.activity_play_video);
         url_html= getIntent().getStringExtra("url");
-        videoView= findViewById(R.id.videoView);
-
+        videoView=findViewById(R.id.videoView);
         // chưa lấy đc linkVideo. Dùng tạm :)
-        Uri video= Uri.parse("https://r4---sn-i3b7knlk.googlevideo.com/videoplayback?expire=1573854342&ei=ZgDPXberF4aHowO4pJHADw&ip=167.172.64.244&id=7cf23bc6f23dd387&itag=18&source=picasa&begin=0&requiressl=yes&sc=yes&ttl=transient&susc=ph&app=fife&mime=video/mp4&dur=1450.109&lmt=1573755296584141&sparams=expire,ei,ip,id,itag,source,requiressl,ttl,susc,app,mime,dur,lmt&sig=ALgxI2wwRgIhAIB1AuY1YIeJIWfBz_eh6cjch0wjrVS14Vc4Ifshwx9-AiEAyo2ZlCJc4nvY95md0pBO1lZWqJRkJOOLOKH_hc2NlVs=&cms_redirect=yes&mip=1.55.94.184&mm=30&mn=sn-i3b7knlk&ms=nxu&mt=1573849658&mv=m&mvi=3&pl=24&lsparams=mip,mm,mn,ms,mv,mvi,pl,sc&lsig=AHylml4wRQIgFUAhqL0tgEA4AWtX_VhSYiWWEbt32aXwsdxZrGZorDcCIQDfpBSSYC5cZNyYZge1SM_fs3p6k5BM802en2VXapZusA==");
-        videoView.setVideoURI(video);
+        videoView.setVideoURI(Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.gokuvsjiren));
         videoView.start();
-
+        MediaController controller= new MediaController(this);
+        videoView.setMediaController(controller);
+        test();
        // new GetLink(url_html).execute();
     }
     class GetLink extends GetHTMLData{
@@ -43,10 +46,18 @@ public class PlayVideo extends AppCompatActivity {
             super.onPostExecute(aVoid);
             linkVideo= getLinkVideo();
             //if(linkVideo!=null){
-                Uri video= Uri.parse("https://r4---sn-i3b7knlk.googlevideo.com/videoplayback?expire=1573854342&ei=ZgDPXberF4aHowO4pJHADw&ip=167.172.64.244&id=7cf23bc6f23dd387&itag=18&source=picasa&begin=0&requiressl=yes&sc=yes&ttl=transient&susc=ph&app=fife&mime=video/mp4&dur=1450.109&lmt=1573755296584141&sparams=expire,ei,ip,id,itag,source,requiressl,ttl,susc,app,mime,dur,lmt&sig=ALgxI2wwRgIhAIB1AuY1YIeJIWfBz_eh6cjch0wjrVS14Vc4Ifshwx9-AiEAyo2ZlCJc4nvY95md0pBO1lZWqJRkJOOLOKH_hc2NlVs=&cms_redirect=yes&mip=1.55.94.184&mm=30&mn=sn-i3b7knlk&ms=nxu&mt=1573849658&mv=m&mvi=3&pl=24&lsparams=mip,mm,mn,ms,mv,mvi,pl,sc&lsig=AHylml4wRQIgFUAhqL0tgEA4AWtX_VhSYiWWEbt32aXwsdxZrGZorDcCIQDfpBSSYC5cZNyYZge1SM_fs3p6k5BM802en2VXapZusA==.mp4");
+                Uri video= Uri.parse(linkVideo);
                 videoView.setVideoURI(video);
                 videoView.start();
             //}
         }
+    }
+    public void test(){
+        final List<String> datas = Arrays.asList("1", "2", "3", "4", "5");
+        SimpleMarqueeView<String> marqueeView = (SimpleMarqueeView) findViewById(R.id.marqueeView);
+        SimpleMF<String> marqueeFactory = new SimpleMF(this);
+        marqueeFactory.setData(datas);
+        marqueeView.setMarqueeFactory(marqueeFactory);
+        marqueeView.startFlipping();
     }
 }
